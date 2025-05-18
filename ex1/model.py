@@ -40,10 +40,10 @@ class ConvVAE(nn.Module):
 
     def reparameterize(self, mu, logvar):
         ################## YOUR CODE HERE ######################
-
+        std = torch.exp(0.5 * logvar)
+        eps = torch.randn_like(std)
+        return mu + eps * std
         ########################################################
-
-        pass
 
     def encode(self, x):
         x = self.encoder(x)
